@@ -1,0 +1,59 @@
+{
+  "name": "bankapp",
+  "version": "0.1.0",
+  "private": true,
+  
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "firebase": "^7.19.0",
+    "immutable": "^3.8.2",
+    "maki": "^2.1.0",
+    "material-auto-rotating-carousel": "^3.0.2",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "mdbreact": "^4.27.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-ga": "^3.1.2",
+    "react-items-carousel": "^2.8.0",
+    "react-redux": "^5.1.2",
+    "react-router": "4.3.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "2.0.5",
+    "react-swipeable-views": "^0.13.9",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "stripe": "^8.96.0"
+  },
+
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+    
+  }
+  
+}
