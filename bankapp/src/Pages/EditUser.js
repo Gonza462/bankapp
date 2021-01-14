@@ -47,7 +47,7 @@ import axios from "axios";
         <Divider />
         <EditAccount handle={this.state.handle} firstName={this.state.firstName} lastName= {this.state.lastName} email={this.state.email} phone={this.state.phone} userID={this.state.userID} />
         <Typography variant="h5" style={{textAlign:"center"}}> Transaction History</Typography>
-        <TransactionsTable/>
+        <TransactionsTable userID={this.state.userID}/>
      
         </div>
         )

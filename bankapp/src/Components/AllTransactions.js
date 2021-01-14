@@ -203,7 +203,7 @@ export default function CollapsibleTable(props) {
 
 
     axios
-      .get("http://localhost:8080/transactionUser/" + result)
+      .get("http://localhost:8080/transaction/all")
       .then((res) => {
         console.log(res);
         //users = res.data
@@ -238,9 +238,12 @@ export default function CollapsibleTable(props) {
             console.log(row),
             <Row key={row.name} row={row} />
           ))} */}
-            {getTransactions.map((user) => (
+            {/* {[].map((user) => (
               <Row key={user.firstName} row={user} />
-            ))}
+            ))} */}
+            {
+                getTransactions.map((transaction) =>  <Row key={transaction.idTransaction} row={transaction} />)
+            }
           </TableBody>
         </Table>
       </TableContainer>

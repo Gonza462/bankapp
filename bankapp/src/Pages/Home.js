@@ -134,9 +134,69 @@ export default class Home extends Component {
                   ></Typography>
                 </CardContent>
               </Card>
+              
             </Paper>
             </a>
             <Divider />
+          
+            <a style={{textDecoration:"none"}} href="/allTransactions">
+            <Paper
+              onClick={(e) => {
+                // this.addCart(e, item);
+              }}
+              style={{
+                display: "flex",
+                marginBottom: 0,
+                borderRadius: 0,
+                width: "100%",
+              }}
+            >
+              <Card
+                style={{ display: "flex", marginBottom: 0, borderRadius: 0 }}
+              >
+                <img
+                  style={{
+                    marginLeft: "1vw",
+                    maxHeight: "64px",
+                    marginTop: "4vh",
+                  }}
+                  src={"/money-transfer.png"}
+                />
+                <CardContent
+                  style={{ paddingBottom: "0px", minHeight: "15vh" }}
+                >
+                  <Typography variant="h6" style={{ fontWeight: "bold" }}>
+                    {"View All Transactions"}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    style={{
+                      color: "rgb(118, 118, 118)",
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      lineHeight: "20px",
+                      fontFamily:
+                        "DD-TTNorms, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+                    }}
+                  >
+                    {"View all the current user transaction activity"}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    style={{
+                      fontWeight: 500,
+                      fontSize: "14px",
+                      fontFamily:
+                        "DD-TTNorms, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+                    }}
+                  ></Typography>
+                </CardContent>
+              </Card>
+              
+            </Paper>
+            </a>
+            <Divider/>
+            
 
 
 

@@ -7,6 +7,8 @@ import home from './Pages/Home'
 import createUser from './Pages/CreateUser';
 import users from './Pages/Users';
 import EditUser from './Pages/EditUser';
+import TransactionsPage from "./Pages/TransactionsPage";
+import AllTransactions from "./Components/AllTransactions"
 import axios from "axios";
 
 
@@ -31,6 +33,7 @@ class App extends Component {
            <Route exact path="/create" component={createUser}/>
            <Route exact path="/users" component={users}/>
            <Route exact path="/edit/:handle" component={EditUser}/>
+           <Route exact path="/allTransactions" component={TransactionsPage}/>
 
  
           </Switch>

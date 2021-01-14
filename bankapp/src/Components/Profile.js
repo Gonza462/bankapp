@@ -23,7 +23,16 @@ class Profile extends Component {
         lastName:"",
         phone:"",
         email:"",
-        open:false
+        open:false,
+        checkingBalance:0,
+        checkingID:0,
+        savingsBalance:0,
+        savingsID:0,
+        depositAmount:null,
+        depositSavings:null,
+        withdrawSavings:null,
+        withdrawCheckings:null
+
     }
     mapUserDetailsToState = (details) => {
        console.log(details.user)
@@ -36,6 +45,10 @@ class Profile extends Component {
     }
     componentDidMount(){
       //get user details
+      console.log(this.props)
+     
+
+
     }
     componentWillReceiveProps(nextProps){
       console.log(nextProps.user)
@@ -47,8 +60,83 @@ class Profile extends Component {
             lastName: nextProps.user.lastName,
             userID:nextProps.user.userID
         })
+
+        axios.get('http://localhost:8080/accountUser/'+nextProps.user.userID).then(res => {
+          console.log(res.data)
+          this.setState({
+            checkingBalance:res.data[0].balance,
+            checkingID: res.data[0].idAccount,
+            savingsBalance:res.data[1].balance,
+            savingsID:res.data[1].idAccount
+          
+          })
+        }).catch( err=> {
+          console.log(err)
+        })
        
     }
+    handleClick = (event) => {
+      const deposit = {
+        amount:this.state.depositAmount,
+        transactionType_name:"Deposit"
+      }
+
+      axios.post('http://localhost:8080/transaction/'+this.state.checkingID,deposit).then(res => {
+        console.log(res)
+      }).catch( err=> {
+        console.log(err)
+      })
+      window.location.reload()
+      console.log(this.state.depositAmount)
+    }
+    handleClickSavings = (event) => {
+      const deposit = {
+        amount:this.state.depositSavings,
+        transactionType_name:"Deposit"
+      }
+      console.log(this.state.savingsID)
+      console.log(this.state.depositSavings)
+
+      axios.post('http://localhost:8080/transaction/'+this.state.savingsID,deposit).then(res => {
+        console.log(res)
+      }).catch( err=> {
+        console.log(err)
+      })
+     window.location.reload()
+     // console.log(this.state.depositAmount)
+    }
+    handleClickWithdrawCheckings = (event) => {
+      const withdraw = {
+        amount:this.state.withdrawCheckings,
+        transactionType_name:"Withdrawal"
+      }
+      //console.log(this.state.savingsID)
+
+      axios.post('http://localhost:8080/transaction/'+this.state.checkingID,withdraw).then(res => {
+        console.log(res)
+      }).catch( err=> {
+        console.log(err)
+      })
+     window.location.reload()
+     // console.log(this.state.depositAmount)
+    }
+
+    handleClickWithdrawSavings = (event) => {
+      const withdraw = {
+        amount:this.state.withdrawSavings,
+        transactionType_name:"Withdrawal"
+      }
+      //console.log(this.state.savingsID)
+
+      axios.post('http://localhost:8080/transaction/'+this.state.savingsID,withdraw).then(res => {
+        console.log(res)
+      }).catch( err=> {
+        console.log(err)
+      })
+     window.location.reload()
+     // console.log(this.state.depositAmount)
+    }
+
     handleOpen =()=>{
       this.setState({
         open:true
@@ -96,7 +184,7 @@ class Profile extends Component {
               <Typography style={{paddingTop:10}}>User ID: {this.state.userID} </Typography>
               <Typography style={{paddingTop:10}}>Phone: {this.state.phone} </Typography>
               <Typography style={{paddingTop:10}}>Email: {this.state.email} </Typography>
-              <div style={{ marginTop:"120px"}}>
+              <div style={{ marginTop:"22vh"}}>
                 <Tooltip title="Edit details" placement="top">
               <IconButton  onClick={this.handleOpen} >
                 <EditIcon  style={{color:"#088fef"}}/>
@@ -192,14 +280,47 @@ class Profile extends Component {
               <Card
                 style={{ marginBottom: 8, borderRadius: 0 }}
               >
+                 <form style={{flexWrap:"nowrap"}}>
+                 <TextField
+                 name="depositAmount"
+                 type="text"
+                 label="deposit"
+                
+                 placeholder="Deposit"
+                 value={this.state.depositAmount}
+                 onChange={this.handleChange}
+                 fullWidth>
+                 </TextField>
+                 <Button style={{marginBottom:"-4vh"}} onClick={this.handleClick}>submit</Button>
+                 </form >
+                 <form style={{flexWrap:"nowrap"}}>
+                 <TextField
+                 name="withdrawCheckings"
+                 type="text"
+                 label="withdraw"
+                
+                 placeholder="Withdraw"
+                 value={this.state.withdrawCheckings}
+                 onChange={this.handleChange}
+                 fullWidth>
+                 </TextField>
+                 <Button style={{marginBottom:"-4vh"}} onClick={this.handleClickWithdrawCheckings}>submit</Button>
+                 </form >
+                 
                 <img
                   style={{
                     marginLeft: "1vw",
                     maxHeight: "50px",
-                    marginTop: "4vh",
+                    paddingTop:"10px"
+                    
                   }}
                   src={"/credit-card.png"}
                 />
+               
+
+
+
+
                 <img style={{width:"7%",marginLeft:"69%"}}src={"/right-arrow.png"}/>
                 <CardContent
                   style={{ paddingBottom: "0px", minHeight: "40px" }}
@@ -216,21 +337,52 @@ class Profile extends Component {
                       fontFamily:
                         "DD-TTNorms, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
                     }}
-                  >Balance: $9,999.00</Typography>
+                  >Balance: ${this.state.checkingBalance}</Typography>
                 </CardContent>
               </Card>
 
               <Card
                 style={{  marginBottom: 0, borderRadius: 0 }}
               >
+                  <form style={{flexWrap:"nowrap"}}>
+                 <TextField
+                 name="depositSavings"
+                 type="text"
+                 label="deposit"
+                
+                 placeholder="Deposit"
+                 value={this.state.depositSavings}
+                 onChange={this.handleChange}
+                 fullWidth>
+                 </TextField>
+                 <Button style={{marginBottom:"-4vh"}}onClick={this.handleClickSavings}>submit</Button>
+                 </form >
+
+                 <form style={{flexWrap:"nowrap"}}>
+                 <TextField
+                 name="withdrawSavings"
+                 type="text"
+                 label="withdraw"
+                
+                 placeholder="Withdraw"
+                 value={this.state.withdrawSavings}
+                 onChange={this.handleChange}
+                 fullWidth>
+                 </TextField>
+                 <Button style={{marginBottom:"-4vh"}} onClick={this.handleClickWithdrawSavings}>submit</Button>
+                 </form >
                 <img
                   style={{
                     marginLeft: "1vw",
                     maxHeight: "50px",
-                    marginTop: "4vh",
+                    paddingTop:"10px"
+                   
                   }}
                   src={"/money-bag.png"}
                 />
+               
+
+
                   <img style={{width:"7%",marginLeft:"69%"}}src={"/right-arrow.png"}/>
                 <CardContent
                   style={{ paddingBottom: "0px", minHeight: "40px" }}
@@ -247,7 +399,7 @@ class Profile extends Component {
                       fontFamily:
                         "DD-TTNorms, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
                     }}
-                  > Balance: $100,000.00 </Typography>
+                  > Balance: ${this.state.savingsBalance} </Typography>
                 </CardContent>
               </Card>
               
