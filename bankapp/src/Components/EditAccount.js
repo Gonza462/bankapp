@@ -16,7 +16,7 @@ export default class EditAccount extends Component {
         return (
             <div style={{ margin: "0 auto"}}>
                 {/* <Typography variant="h4" style={{textAlign:"center"}}>{this.state.UserHandle}</Typography> */}
-                <Profile handle={this.state.UserHandle}/>
+                <Profile  user = {this.props} handle={this.state.UserHandle}/>
             </div>
         )
     }

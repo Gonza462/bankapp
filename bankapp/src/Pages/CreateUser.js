@@ -113,7 +113,9 @@ export default class CreateUser extends Component {
         const {formErrors} = this.state;
         return (
             <div style={{ margin: "0 auto", maxWidth: "1000px", background:"#edf6f9"}}>
+              <a href="/" style={{textDecoration:"none"}}>
         <h1 style={{ textAlign: "center"}}>Create User</h1>
+        </a>
         <Divider />
         <div className = "wrapper">
             <div className="form-wrapper" style={{marginTop:'-45vh'}}>

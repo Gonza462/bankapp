@@ -110,7 +110,7 @@ function Row(props) {
         <TableCell align="right">
           <a
             style={{ textDecoration: "none", color: "white" }}
-            href={`/edit/${row.idUser}`}
+            href={`/edit/${row.firstName}`}
           >
             {" "}
             <Button
@@ -154,7 +154,6 @@ function Row(props) {
                     <TableCell>Transaction ID</TableCell>
                     <TableCell>Account ID</TableCell>
                     <TableCell>Amount</TableCell>
-                  
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -257,13 +256,13 @@ export default function CollapsibleTable() {
           <TableHead>
             <TableRow>
               <TableCell />
-              <TableCell>User ID</TableCell>
-              <TableCell align="right">First Name</TableCell>
-              <TableCell align="right">Last Name</TableCell>
-              <TableCell align="right">Email</TableCell>
-              <TableCell align="right">Phone</TableCell>
-              <TableCell align="right">Edit</TableCell>
-              <TableCell align="right">Delete</TableCell>
+              <TableCell >Date</TableCell>
+              <TableCell align="right">User ID</TableCell>
+              <TableCell align="right">Transaction ID</TableCell>
+              <TableCell align="right">Account ID</TableCell>
+              <TableCell align="right">Type</TableCell>
+
+              <TableCell align="right">Amount</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -271,7 +270,7 @@ export default function CollapsibleTable() {
             console.log(row),
             <Row key={row.name} row={row} />
           ))} */}
-            {getUsers.map((user) => (
+            {[].map((user) => (
               <Row key={user.firstName} row={user} />
             ))}
           </TableBody>
