@@ -128,17 +128,7 @@ function Row(props) {
           </a>
         </TableCell>
 
-        <TableCell align="right">
-          <Button
-            style={{
-              background: "#f12323",
-              color: "white",
-              marginRight: "-11px",
-            }}
-          >
-            delete
-          </Button>
-        </TableCell>
+       
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -263,7 +253,7 @@ export default function CollapsibleTable() {
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Phone</TableCell>
               <TableCell align="right">Edit</TableCell>
-              <TableCell align="right">Delete</TableCell>
+              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
